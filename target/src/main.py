@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List
 
 from fastapi import FastAPI
 from lib.person import Person
@@ -19,7 +19,7 @@ async def hello_world(name: str = "World"):
 
 
 @app.get("/people/")
-async def get_people():
+async def fetch_all_people():
     return {
         "success": True,
         "message":
@@ -28,7 +28,7 @@ async def get_people():
 
 
 @app.get("/people/{person_id}")
-async def get_person(person_id: str):
+async def find_person(person_id: str):
     filtered: List[Person] = [p for p in people if str(p.id_) == person_id]
     if filtered == []:
         return {

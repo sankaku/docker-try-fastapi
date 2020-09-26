@@ -1,15 +1,8 @@
-from uuid import uuid4
+from uuid import uuid4, UUID
 
 
 class Person:
     def __init__(self, name: str, age: int) -> None:
-        self.id_ = uuid4()
-        self.name = name
-        self.age = age
-
-    def __show__(self) -> str:
-        return {
-            "id": self.id_,
-            "name": self.name,
-            "age": self.age,
-        }
+        self.id_: UUID = uuid4()
+        self.name: str = name
+        self.age: int = age
